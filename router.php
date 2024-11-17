@@ -1,7 +1,5 @@
-<?php
-    
+<?php   
     require_once 'libs/router.php';
-
     require_once 'api/controllers/productApiController.php';
    
     $router = new Router();
