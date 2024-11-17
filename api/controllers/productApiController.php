@@ -11,41 +11,45 @@ class productApiController {
         $this->view = new JSONView();
     }
 
-    // /api/tareas
-    public function getAll($req, $res) {
-       
-        $products = $this->model->getProducts();
-        // mando las tareas a la vista
+    // /api/productos
+    // /api/productos?ofertas=false
+        // /api/productos?ofertas=false
+    public function getAll($req) {
+        $filtrarOfertas = null;
+
+        if(isset($req->query->ofertas)) {
+            $filtrarOfertas = $req->query->ofertas;
+        }
+        
+        $orderBy = false;
+        if(isset($req->query->orderBy)){
+            $orderBy = $req->query->orderBy;
+        }
+
+        $products = $this->model->getProducts($filtrarOfertas, $orderBy);
+
+
         return $this->view->response($products);
     }
     
     public function getAllCat($req, $res) {
-        // obtengo el id de la tarea desde la ruta
         $id_cat = $req->params->id_cat;
-
-        // obtengo la tarea de la DB
         $products = $this->model->getProductsCat($id_cat);
 
         if(!$products) {
             return $this->view->response("No existen productos de categoria", 404);
         }
-
-        // mando la tarea a la vista
         return $this->view->response($products);
     }
 
+    // /api/productos/:id
     public function get($req, $res) {
-        // obtengo el id de la tarea desde la ruta
         $id = $req->params->id;
-
-        // obtengo la tarea de la DB
         $product = $this->model->getProduct($id);
 
         if(!$product) {
-            return $this->view->response("El producto con el id=$id no existe", 404);
+            return $this->view->response("El producto con el id $id, no existe", 404);
         }
-
-        // mando la tarea a la vista
         return $this->view->response($product);
     }
 

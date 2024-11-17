@@ -7,8 +7,34 @@ class ProductModel {
         $this->db = new PDO('mysql:host=localhost;' . 'dbname=db_supermercado;charset=utf8', 'root', '');
     }
 
-    public function getProducts() {
-        $query =  $this->db->prepare('SELECT * FROM `productos`');
+    public function getProducts($ofertas = null, $orderBy = false) { //Trabajado en clase
+        $sql = 'SELECT * FROM `productos`';
+
+        if($ofertas != null) {
+            if($ofertas == 'true')
+                $sql .= ' WHERE `oferta` = 1';
+            else
+                $sql .= ' WHERE `oferta` = 0';
+        }
+
+        if($orderBy) {
+            switch($orderBy) {
+                case 'precio':
+                    $sql .= ' ORDER BY `precio_producto`';
+                    break;
+                case 'precio_desc':
+                    $sql .= ' ORDER BY `precio_producto` DESC';
+                    break;
+                case 'categoria':
+                    $sql .= ' ORDER BY `id_categoria`';
+                    break;
+                case 'categoria_desc':
+                    $sql .= ' ORDER BY `id_categoria` DESC';
+                    break;
+            }
+        }
+
+        $query =  $this->db->prepare($sql);
         $query->execute();
         $all_products = $query->fetchAll(PDO::FETCH_OBJ);
         return $all_products;
