@@ -52,6 +52,7 @@ CREATE TABLE `productos` (
   `id_producto` int(11) NOT NULL,
   `nombre_producto` varchar(50) NOT NULL,
   `precio_producto` int(10) NOT NULL,
+  `oferta` tinyint(1) NOT NULL DEFAULT '0',
   `id_categoria` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -59,13 +60,13 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id_producto`, `nombre_producto`, `precio_producto`, `id_categoria`) VALUES
-(2, 'Pasta de dientes', 5995, 7),
-(4, 'Lentejas', 995, 1),
-(5, 'Arroz', 1250, 1),
-(6, 'Coca Cola', 1500, 6),
-(7, 'Curitas', 300, 7),
-(8, 'Bolsa', 200, 1);
+INSERT INTO `productos` (`id_producto`, `nombre_producto`, `precio_producto`, `oferta`, `id_categoria`) VALUES
+(2, 'Pasta de dientes', 5995, 0, 7),
+(4, 'Lentejas', 995, 1, 1),
+(5, 'Arroz', 1250, 0, 1),
+(6, 'Coca Cola', 1500, 1, 6),
+(7, 'Curitas', 300, 0, 7),
+(8, 'Bolsa', 200, 0, 1);
 
 -- --------------------------------------------------------
 
