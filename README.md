@@ -12,6 +12,9 @@ Desde la última entrega, se modificó la DB al agregar un nuevo campo en la tab
 ## Tabla de ruteo (endpoints):
 + `./productos`: Utiliza el verbo 'GET', para invocar a todos los productos sin filtros.
 + `./productos/:id`: Utiliza el verbo 'GET'. Invoca un producto específico por su ID.
++ `./productos/categoria/:id_cat`: Utiliza el verbo 'GET'. Invoca los productos pertenecientes a la categoria solicitada por ID.
++ `./categorias`: Utiliza el verbo 'GET'. Invoca a todas las categorias.
++ `./categorias/:id`: Utiliza el verbo 'GET'. Invoca una categoria epecífica por su ID.
 + `./productos/:id`: Utiliza el verbo 'DELETE'. Elimina un producto específico por su ID.
 + `./productos`: Utiliza el verbo 'POST'. Crea un producto nuevo.
     + JSON
@@ -21,8 +24,7 @@ Desde la última entrega, se modificó la DB al agregar un nuevo campo en la tab
         "precio_producto":99,
         "oferta":1,
         "id_categoria":1
-    }
-+ `./productos/categoria/:id_cat`: Utiliza el verbo 'GET',     
+    }    
 + `./productos/:id`: Utiliza el verbo 'PUT'. Modifica un producto específico por su ID.
     + JSON
     {

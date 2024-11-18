@@ -66,8 +66,6 @@ class ProductModel {
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
-
-
     public function insertProduct($product_name, $product_price, $oferta, $id_category){
         $query = $this->db->prepare('INSERT INTO `productos` (`nombre_producto`, `precio_producto`, `oferta`, `id_categoria`) VALUES (?, ?, ?, ?)');
         $query->execute([$product_name, $product_price, $oferta, $id_category]);   

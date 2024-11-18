@@ -35,7 +35,7 @@ class productApiController {
         $products = $this->model->getProductsCat($id_cat);
 
         if(!$products) {
-            return $this->view->response("No existen productos de categoria", 404);
+            return $this->view->response("No existen productos en la categoria de id: $id_cat", 404);
         }
         return $this->view->response($products);
     }
