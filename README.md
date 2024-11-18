@@ -35,9 +35,9 @@ Desde la última entrega, se modificó la DB al agregar un nuevo campo en la tab
     }
 
 **Query Params (filtros y orden)**
-+++ `./productos?ofertas=false`: Utiliza el verbo 'GET', para invocar a todos los productos que no estén en oferta. 
-+++ `./productos?ofertas=false`: Invoca todos los productos que estén en oferta. 
-++ `./productos?orderBy=categoria`: Utiliza el verbo 'GET', para invocar a todos los productos sin filtro, pero cambia el orden del view. Ordena de manera ascendente según el id de la categoría a la que pertenece.
-+++ `./productos?orderBy=categoria_desc`: Ordena de manera descendente según el id de la categoría a la que pertenece.
-+++ `./productos?orderBy=precio`: Ordena de manera ascendente según el precio del producto.
-+++ `./productos?orderBy=precio_desc`: Ordena de manera descendente según el precio del producto.
++ `./productos?ofertas=false`: Utiliza el verbo 'GET', para invocar a todos los productos que no estén en oferta. 
++ `./productos?ofertas=false`: Invoca todos los productos que estén en oferta. 
++ `./productos?orderBy=categoria`: Utiliza el verbo 'GET', para invocar a todos los productos sin filtro, pero cambia el orden del view. Ordena de manera ascendente según el id de la categoría a la que pertenece.
++ `./productos?orderBy=categoria_desc`: Ordena de manera descendente según el id de la categoría a la que pertenece.
++ `./productos?orderBy=precio`: Ordena de manera ascendente según el precio del producto.
++ `./productos?orderBy=precio_desc`: Ordena de manera descendente según el precio del producto.
