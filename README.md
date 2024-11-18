@@ -14,8 +14,16 @@ Desde la última entrega, se modificó la DB al agregar un nuevo campo en la tab
 + `./productos/:id`: Utiliza el verbo 'GET'. Invoca un producto específico por su ID.
 + `./productos/:id`: Utiliza el verbo 'DELETE'. Elimina un producto específico por su ID.
 + `./productos`: Utiliza el verbo 'POST'. Crea un producto nuevo.
+    + JSON
+    {
+        "id_producto":12,
+        "nombre_producto":"Prueba 2 API",
+        "precio_producto":99,
+        "oferta":1,
+        "id_categoria":1
+    }
 + `./productos/categoria/:id_cat`: Utiliza el verbo 'GET',     
-+ `./productos/:id`: Utiliza el verbo 'PUT', 
++ `./productos/:id`: Utiliza el verbo 'PUT'. Modifica un producto específico por su ID
 
 **Query Params (filtros y orden)**
 +++ `./productos?ofertas=false`: Utiliza el verbo 'GET', para invocar a todos los productos que no estén en oferta. 
