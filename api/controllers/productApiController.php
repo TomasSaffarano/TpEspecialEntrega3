@@ -13,7 +13,7 @@ class productApiController {
 
     // /api/productos
     // /api/productos?ofertas=false
-        // /api/productos?ofertas=false
+        // /api/productos?ofertas=true
     public function getAll($req) {
         $filtrarOfertas = null;
 
