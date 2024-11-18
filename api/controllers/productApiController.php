@@ -27,8 +27,6 @@ class productApiController {
         }
 
         $products = $this->model->getProducts($filtrarOfertas, $orderBy);
-
-
         return $this->view->response($products);
     }
     
@@ -40,6 +38,25 @@ class productApiController {
             return $this->view->response("No existen productos de categoria", 404);
         }
         return $this->view->response($products);
+    }
+
+    public function serveCategories($req) {
+        $categories = $this->model->getCategories();
+
+        if(!$categories) {
+            return $this->view->response("No existen productos de categoria", 404);
+        }
+        return $this->view->response($categories);
+    }
+
+    public function getCat($req) {
+        $id = $req->params->id;
+        $category = $this->model->getCategory($id);
+
+        if(!$category) {
+            return $this->view->response("La categoria con el id $id, no existe", 404);
+        }
+        return $this->view->response($category);
     }
 
     // /api/productos/:id
@@ -66,7 +83,6 @@ class productApiController {
         $this->view->response("El producto con el id: $id se elimino con exito");
     }
 
-
     public function create($req) {
 
         if (empty($req->body->nombre_producto) || empty($req->body->precio_producto) || empty($req->body->id_categoria) || empty($req->body->oferta)) {
@@ -87,34 +103,24 @@ class productApiController {
         return $this->view->response($producto, 201);
     }
 
-    public function update($req) {
+    public function update($req, $res) {
         $id = $req->params->id;
-
-        // verifico que exista
         $product = $this->model->getProduct($id);
 
         if (!$product) {
-            return $this->view->response("El producto con el id=$id no existe", 404);
+            return $this->view->response("El producto con el id: $id no existe", 404);
         }
-
-         // valido los datos
-         if (empty($req->body->nombre_producto) || empty($req->body->precio_producto) || empty($req->body->id_categoria)) {
+         if (empty($req->body->nombre_producto) || empty($req->body->precio_producto)|| empty($req->body->oferta) || empty($req->body->id_categoria)) {
             return $this->view->response('Faltan completar datos', 400);
         }
 
-        // obtengo los datos
         $nombre = $req->body->nombre_producto;       
-        $precio = $req->body->precio_producto;       
+        $precio = $req->body->precio_producto; 
+        $oferta = $req->body->oferta;      
         $id_categoria = $req->body->id_categoria;       
 
-
-        // actualiza la tarea
-        $this->model->changeProduct($nombre, $precio, $id_categoria, $id);
-
-        // obtengo la tarea modificada y la devuelvo en la respuesta
+        $this->model->changeProduct($id, $nombre, $precio, $oferta, $id_categoria);
         $producto = $this->model->getProduct($id);
         return $this->view->response($producto, 200);
     }
-
-
 }

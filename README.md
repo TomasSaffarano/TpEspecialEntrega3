@@ -23,7 +23,14 @@ Desde la última entrega, se modificó la DB al agregar un nuevo campo en la tab
         "id_categoria":1
     }
 + `./productos/categoria/:id_cat`: Utiliza el verbo 'GET',     
-+ `./productos/:id`: Utiliza el verbo 'PUT'. Modifica un producto específico por su ID
++ `./productos/:id`: Utiliza el verbo 'PUT'. Modifica un producto específico por su ID.
+    + JSON
+    {
+        "nombre_producto":"Prueba 3.1 API",
+        "precio_producto":99,
+        "oferta":1,
+        "id_categoria":1
+    }
 
 **Query Params (filtros y orden)**
 +++ `./productos?ofertas=false`: Utiliza el verbo 'GET', para invocar a todos los productos que no estén en oferta. 

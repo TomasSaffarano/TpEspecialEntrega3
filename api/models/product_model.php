@@ -54,11 +54,19 @@ class ProductModel {
         return $products;
     }
 
-    public function getSelect(){
-        $query = $this->db->prepare('SELECT * FROM `categorias`');
+    public function getCategories(){
+        $query = $this->db->prepare('SELECT * FROM categorias');
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function getCategory($id){
+        $query = $this->db->prepare('SELECT * FROM `categorias` WHERE `id_categoria` = ?');
+        $query->execute([$id]);
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
+
 
     public function insertProduct($product_name, $product_price, $oferta, $id_category){
         $query = $this->db->prepare('INSERT INTO `productos` (`nombre_producto`, `precio_producto`, `oferta`, `id_categoria`) VALUES (?, ?, ?, ?)');
@@ -66,9 +74,9 @@ class ProductModel {
         return $this->db->lastInsertId();
     }
     
-    public function changeProduct($product_name, $product_price, $id_category, $id_product){
-        $query = $this->db->prepare('UPDATE `productos` SET `nombre_producto`=?, `precio_producto`=?, `id_categoria`=? WHERE `id_producto` = ?');
-        $query->execute([$product_name, $product_price, $id_category, $id_product]);
+    public function changeProduct($id_product, $product_name, $product_price, $oferta, $id_category){
+        $query = $this->db->prepare('UPDATE `productos` SET `nombre_producto`=?, `precio_producto`=?, `oferta`=?, `id_categoria`=? WHERE `id_producto` = ?');
+        $query->execute([$product_name, $product_price, $oferta, $id_category, $id_product]);
   
     }
 
