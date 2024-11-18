@@ -16,6 +16,7 @@ Desde la última entrega, se modificó la DB al agregar un nuevo campo en la tab
 + `./productos`: Utiliza el verbo 'POST',
 + `./productos/categoria/:id_cat`: Utiliza el verbo 'GET',     
 + `./productos/:id`: Utiliza el verbo 'PUT', 
+
 **Query Params (filtros y orden)**
 + + `./productos?ofertas=false`: Utiliza el verbo 'GET', para invocar a todos los productos que no estén en oferta. 
 + + `./productos?ofertas=false`: Invoca todos los productos que estén en oferta. 
